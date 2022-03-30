@@ -8,17 +8,20 @@ export default function CharacterList() {
   if (loading) return <div> loading...</div>;
   if (error) return <div>{error.message}</div>;
   return (
-    <div>
+    <div className="container grid grid-cols-4 gap-4">
       {data.characters.results.map((char) => {
         return (
-          <Link to={`/${char.id}`}>
-            <div key={char.id}>
+          <div
+            key={char.id}
+            class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-screen-sm m-1 hover:scale-110 translate-y-6 ease-in-out duration-300"
+          >
+            <Link to={`/${char.id}`}>
               <div>
                 <img src={char.image} alt={char.name} />
               </div>
-              <div>{char.name}</div>
-            </div>
-          </Link>
+              <div className=" text-blue-450">{char.name}</div>
+            </Link>
+          </div>
         );
       })}
     </div>
